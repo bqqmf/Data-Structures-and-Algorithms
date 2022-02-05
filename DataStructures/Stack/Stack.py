@@ -1,45 +1,49 @@
-# Python program for implementation of stack
-
-# import maxsize from sys module
-# Used to return -infinite when stack is empty
-from sys import maxsize
+# collections.deque로 스택 구현
+from collections import deque
 
 
-# Function to create a stack. It initializes size of stack as 0
-def createStack():
-    stack = []
-    return stack
+class Stack:
+    def __init__(self):
+        self.stack = deque()
+
+    def __str__(self):
+        return "".join(str(self.stack))
+
+    # 스택이 비었으면 True 반환, 그렇지 않으면 False 반환
+    def isEmpty(self):
+        return False if len(self.stack) else True
+
+    # 스택의 끝에 data 삽입
+    def push(self, data):
+        self.stack.append(data)
+
+    # 스택에 값이 있다면 끝에서 data를 꺼내고 반환
+    def pop(self):
+        if self.isEmpty():
+            return "Stack is Empty"
+        else:
+            return self.stack.pop()
+
+    # 스택에 값이 있다면 끝의 data를 반환
+    def peek(self):
+        if self.isEmpty():
+            return "Stack is Empty"
+        else:
+            return self.stack[-1]
+
+    # 스택의 크기 반환
+    def size(self):
+        return len(self.stack)
 
 
-# Stack is empty when stack size is 0
-def isEmpty(stack):
-    return len(stack) == 0
-
-
-# Function to add an item to stack. It increases size by 1
-def push(stack, item):
-    stack.append(item)
-    print(item + " pushed to stack ")
-
-
-# Function to remove an item from stack. It decreases size by 1
-def pop(stack):
-    if (isEmpty(stack)):
-        return str(-maxsize - 1)  # return minus infinite
-
-    return stack.pop()
-
-
-# Function to return the top from stack without removing it
-def peek(stack):
-    if (isEmpty(stack)):
-        return str(-maxsize - 1)  # return minus infinite
-    return stack[len(stack) - 1]
-
-
-# Driver program to test above functions
-stack = createStack()
-push(stack, str(10))
-push(stack, str(20))
-push(stack, str(30))
-print(pop(stack) + " popped from stack")
+if __name__ == '__main__':
+    myStack = Stack()
+    myStack.push(1)
+    myStack.push(2)
+    myStack.push(3)
+    print("myStack:", myStack)
+    print("myStack의 맨 끝:", myStack.peek())
+    print("myStack에서 pop한 값:", myStack.pop())
+    print("myStack에서 pop한 값:", myStack.pop())
+    print("myStack에서 pop한 값:", myStack.pop())
+    print("myStack에서 pop한 값:", myStack.pop())
