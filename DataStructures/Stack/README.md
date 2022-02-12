@@ -3,7 +3,7 @@
 * array
 * linked list
 
-Stack.py에서는 array로 스택을 구현했습니다.
+Stack.cpp에서는 array로 스택을 구현했습니다.
 
 ## 시간 복잡도
 
